@@ -13,9 +13,10 @@ app.get('/',function(req,res){
 // 匹配所有以 /search 开头的请求
 app.get(/^\/search/, function(req, res){
 	var Crawler = crawler.Crawler;
-	
 	var originalUrl = req.originalUrl;
-	var keyword = originalUrl.substring(originalUrl.indexOf('k=')+2);
+	
+	var temp = originalUrl.indexOf('k=')+2;
+	var keyword = originalUrl.substring(temp);
 	
 	var url = 'http://search.aol.com/aol/search?v_t=comsearch&enabled_terms=&q='+keyword+'&page=';
 	var urls = [];
@@ -53,8 +54,8 @@ app.get(/^\/search/, function(req, res){
 						+'</script>'
 						+'</head>'
 						+'<body>'
-						+'<p><input class="search_input" type="text" value='+keyword+'/><a href="javascript:void(0)" class="search_btn">搜索</a>'
-						+'</p><h1>' +'</h1>' + results.join(""))
+						+'<p><input class="search_input" type="text" value='+keyword+'><a href="javascript:void(0)" class="search_btn">搜索</a>'
+						+'</p><h1>' +'</h1>' + results.join("<br/>"))
 						+'</body>'
 						+'</html>';
 				
