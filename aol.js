@@ -2,9 +2,12 @@ var express = require('express');
 var crawler = require("crawler");
 var app = express();
 var crawler = crawler;
+// app.register('.html', require('jade'));
 
 app.get('/',function(req,res){
+	// res.render('aol.html');
 	res.sendfile('aol.html');
+	
 });
 
 // 匹配所有以 /search 开头的请求
@@ -12,10 +15,11 @@ app.get(/^\/search/, function(req, res){
 	var Crawler = crawler.Crawler;
 	
 	var originalUrl = req.originalUrl;
-	var keyword = originalUrl.substring(originalUrl.indexOf('k='));
+	var keyword = originalUrl.substring(originalUrl.indexOf('k=')+2);
 	
 	var url = 'http://search.aol.com/aol/search?v_t=comsearch&enabled_terms=&q='+keyword+'&page=';
 	var urls = [];
+
 	var max = 1;
 	for(var i=1;i<=max;i++){
 		urls.push(url+i);
@@ -33,9 +37,27 @@ app.get(/^\/search/, function(req, res){
 
 			if(cnt++ == max){
 				
-				res.send('<p><input class="search_input" type="text"/><a href="javascript:void(0)" class="search_btn">搜索</a>'
-					+'</p><h1>' +'</h1>' + results.join(""));
-
+				res.send('<html xmlns="http://www.w3.org/1999/xhtml">'
+						+'<head>'
+						+'<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />'
+						+'<title>NEW search</title>'
+						+'<link type="text/css" rel="stylesheet" href="http://www.search.com/css/aol.css" />'
+						+'<script type="text/javascript" src="http://www.search.com/js/jquery.js"></script>'
+						+'<script type="text/javascript" src="http://www.search.com/js/migrate.js"></script>'
+						+'<script type="text/javascript">'
+						+	'$(function(){'
+						+		'$(".search_btn").click(function(){'
+						+			'window.location.href = "/search?k=" + $(".search_input").val();'
+						+		'});'
+						+	'});'
+						+'</script>'
+						+'</head>'
+						+'<body>'
+						+'<p><input class="search_input" type="text" value='+keyword+'/><a href="javascript:void(0)" class="search_btn">搜索</a>'
+						+'</p><h1>' +'</h1>' + results.join(""))
+						+'</body>'
+						+'</html>';
+				
 			}
 		// $("#pagination ul a").length
 			
@@ -47,7 +69,7 @@ app.get(/^\/search/, function(req, res){
 
   
 });
-
+// app.use();
 
 
 var server = app.listen(3000, function() {
