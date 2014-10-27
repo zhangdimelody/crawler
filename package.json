@@ -1,0 +1,30 @@
+{
+  "name": "1020",
+  "version": "1.0.0",
+  "description": "1, aol.js -> index.js 2, template 3, static file path 4, ajax 5, cache [https://github.com/mranney/node_redis] 6, service",
+  "main": "index.js",
+  "dependencies": {
+    "crawler": "^0.2.7",
+    "express": "^4.9.7",
+    "grunt": "^0.4.5",
+    "grunt-underscore-jst": "^0.3.0",
+    "jade": "^1.7.0",
+    "underscore": "^1.7.0",
+    "jQuery": "^1.7.4",
+    "backbone": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangdimelody/crawler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangdimelody/crawler/issues"
+  },
+  "homepage": "https://github.com/zhangdimelody/crawler"
+}

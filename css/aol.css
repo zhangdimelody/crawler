@@ -1,2 +1,10 @@
 input.search_input{ width: 280px; height: 30px; line-height: 30px; font-size: 14px; }
-a.search_btn{ width: 100px; height: 30px; background-color: lightgreen; border:1px solid #ccc; }
+a.search_btn{ width: 100px;
+height: 30px;
+line-height: 30px;
+text-align: center;
+color: #fff;
+text-decoration: none;
+background-color: lightgreen;
+border: 1px solid #ccc;
+display: inline-block; }

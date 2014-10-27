@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>NEW search</title>
+<link type="text/css" rel="stylesheet" href="http://www.search.com/css/aol.css" />
+<script type="text/javascript" src="http://www.search.com/js/jquery.js"></script>
+<script type="text/javascript" src="http://www.search.com/js/migrate.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".search_btn").click(function(){
+			window.location.href = "/search?k=" + $(".search_input").val();
+		});
+	});
+</script>
+</head>
+<body>
+	<p>
+		<input class="search_input" type="text" value='d'><a href="javascript:void(0)" class="search_btn">搜索</a>
+	</p>
+	
+	
+</body>
+</html>
