@@ -40,24 +40,27 @@ app.get(/^\/search/, function(req, res){
 			});
 
 			if(cnt++ == max){
-				console.log(JST)
-				console.log(error)
+				console.log(results)
 				// var template = JST["temp.html"]();
 				// console.log(template)
 
-				return Backbone.View.extend({
-				  template: JST["temp.html"]
-				  ,initialize:function(){
+				// return Backbone.View.extend({
+				//   template: JST["temp.html"]
+				//   ,initialize:function(){
 
-				  }
-				  ,render:function(){
-				    $('body').html(this.template());
-				  }
-				});
+				//   }
+				//   ,render:function(){
+				//     $('body').html(this.template());
+				//   }
+				// });
 				// item.render();
-				console.log(template())
-				
-				res.send(temp());
+				var data = {};
+				data.content = results;
+				var te = {'a' : 1};
+				var ab = JST()["temp1.html"];
+				var cc = ab(te)
+				// console.log(a)
+				res.send(cc);
 				
 			}
 		// $("#pagination ul a").length
